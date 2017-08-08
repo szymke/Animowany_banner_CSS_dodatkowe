@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Leckerli+One');
+
+.main{
+   margin: 0 auto;
+   width: 420px;
+   .textAndFigure{
+      @include flexbox;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+      .text{
+         position: relative;
+         font-family: sans-serif;
+         font-weight: 600;
+         text-transform: uppercase;
+         font-size: 24px;
+         left: 0;
+      }
+      .star{
+         background: url('../images/sprite.png') no-repeat -100px -100px;
+         height: 100px;
+         width: 100px;
+         position: relative;
+         right: 0;
+         animation: moveTop 1s,
+                    figureSide 1s 4s forwards,
+                    changeStarColor 6.5s steps(1) forwards;
+      }
+      .square{
+         background: url('../images/sprite.png') no-repeat 0 -100px;
+         height: 100px;
+         width: 100px;
+         position: relative;
+         right: 0;
+         animation: moveTop 2s,
+                    figureSide 1s 4.5s forwards,
+                    changeSquareColor 7s steps(1) forwards;
+
+      }
+      .hexagon{
+         background: url('../images/sprite.png') no-repeat -200px -100px;
+         height: 100px;
+         width: 100px;
+         position: relative;
+         right: 0;
+         animation: moveTop 3s,
+                    figureSide 1s 5s forwards,
+                    changeHexagonColor 7.5s steps(1) forwards;
+      }
+      .circle{
+         background: url('../images/sprite.png') no-repeat -300px -100px;
+         height: 100px;
+         width: 100px;
+         position: relative;
+         right: 0;
+         animation: moveTop 4s,
+                    figureSide 1s 5.5s forwards,
+                    changeCircleColor 8s steps(1) forwards;
+      }
+   }
+   div:first-of-type .text{
+      animation: moveTop 1s,
+                 textSide 1s 4s forwards;
+      }
+   div:nth-of-type(2) .text{
+         animation: moveTop 2s,
+                    textSide 1s 4.5s forwards;
+      }
+   div:nth-of-type(6) .text{
+         animation: moveTop 3s,
+                    textSide 1s 5s forwards;
+      }
+   div:nth-of-type(7) .text{
+         animation: moveTop 4s,
+                    textSide 1s 5.5s forwards;
+      }
+   div:first-of-type{
+      animation: textAndFigureLeft 4s 9s forwards;
+   }
+   div:nth-of-type(2){
+      animation: textAndFigureRight 4s 9s forwards;
+   }
+   div:nth-of-type(6){
+      animation: textAndFigureLeft 4s 9s forwards;
+   }
+   div:last-of-type{
+      animation: textAndFigureRight 4s 9s forwards;
+   }
+
+}
+
+.secondText{
+   text-transform: uppercase;
+   position: absolute;
+   font-size: 45px;
+   font-weight: bold;
+   visibility: hidden;
+}
+div:nth-child(3){
+   top: 150px;
+   left: calc(50vw - 180px);
+   font-family: Verdana, sans-serif;
+   animation: secondTextBigger 4s 13s forwards,
+              secondText360 2s 21s forwards,
+              finish 5s 22s forwards;
+}
+div:nth-child(5){
+   top: 270px;
+   left: calc(50vw - 218px);
+   font-family: 'Leckerli One', cursive;
+   animation: secondTextBigger 4s 13s forwards,
+              secondText360 2s 21s forwards,
+              finish 5s 22s forwards;
+}
+
+.thirdText{
+   font-family: sans-serif;
+   position: absolute;
+   top: -300px;
+   border: 1px solid black;
+   padding: 5px;
+   font-size: 20px;
+   text-transform: uppercase;
+   animation: thirdTextTop 2s 17s forwards,
+              thirdTextRight 2s 19s forwards,
+              finish 5s 22s forwards;
+}
+
+@keyframes moveTop {
+   0%{
+      top: -800px;
+   }
+   100%{
+      top: 0;
+   }
+}
+
+@keyframes textSide {
+   0%{
+      left: 0;
+   }
+   100%{
+      left: -100px;
+   }
+}
+
+@keyframes figureSide {
+   0%{
+      right: 0;
+   }
+   100%{
+      right: -100px;
+   }
+}
+
+@keyframes changeStarColor {
+  100%{
+      background-position: -100px 0;
+   }
+}
+
+@keyframes changeSquareColor {
+  100%{
+      background-position: 0 0;
+   }
+}
+
+@keyframes changeHexagonColor {
+  100%{
+      background-position: -200px 0;
+   }
+}
+
+@keyframes changeCircleColor {
+  100%{
+      background-position: -300px 0;
+   }
+}
+
+@keyframes textAndFigureLeft {
+   0%{
+      left: 0;
+   }
+   25%{
+      left: -650px;
+   }
+   100%{
+      left: -1300px;
+      transform: rotate(-360deg);
+      opacity: 0;
+   }
+}
+
+@keyframes textAndFigureRight {
+   0%{
+      right: 0;
+   }
+   25%{
+      right: -650px;
+   }
+   100%{
+      right: -1300px;
+      transform: rotate(360deg);
+      opacity: 0;
+   }
+}
+
+@keyframes secondTextBigger {
+   0%{
+      transform: scale(0);
+      opacity: 1;
+   }
+   100%{
+      visibility: visible;
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
+@keyframes secondText360 {
+   100%{
+      transform: rotateX(360deg);
+   }
+}
+
+@keyframes thirdTextTop {
+   0%{
+      top: -300px;
+      left: calc(50vw - 30vw);
+   }
+   100%{
+      top: 218px;
+      left: calc(50vw - 30vw);
+   }
+}
+
+@keyframes thirdTextRight {
+   0%{
+      left: calc(50vw - 30vw);
+   }
+   100%{
+      left: calc(50vw - 55px);
+   }
+}
+
+@keyframes finish {
+   0%{
+      transform: scaleX(1);
+      opacity: 1;
+   }
+   100%{
+      transform: scaleX(0.3);
+      opacity: 0;
+   }
+}
